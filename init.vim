@@ -1,22 +1,12 @@
-if &compatible
-  set nocompatible
-endif
-
-set runtimepath^=~/.nvim/repos/github.com/Shougo/dein.vim
-
-call dein#begin(expand('~/.nvim'))
-call dein#add('Shougo/dein.vim')
-call dein#add('scrooloose/nerdtree')
-call dein#add('chriskempson/vim-tomorrow-theme')
-call dein#add('w0ng/vim-hybrid')
-call dein#add('jlanzarotta/bufexplorer')
-call dein#add('junegunn/fzf.vim')
-call dein#add('rust-lang/rust.vim')
-call dein#add('cespare/vim-toml')
-call dein#add('scrooloose/nerdcommenter')
-"call dein#add('scrooloose/syntastic')
-"call dein#add('kien/ctrlp.vim')
-call dein#end()
+call plug#begin('~/.config/nvim/plugged')
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/fzf.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'chriskempson/vim-tomorrow-theme'
+call plug#end()
 
 filetype plugin indent on
 
