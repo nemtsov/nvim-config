@@ -1,11 +1,20 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'scrooloose/nerdcommenter'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'junegunn/fzf.vim'
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'mhinz/vim-signify'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'ervandew/supertab'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'Raimondi/delimitMate'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
+Plug 'rhysd/nyaovim-popup-tooltip'
 call plug#end()
 
 filetype plugin indent on
@@ -13,7 +22,8 @@ filetype plugin indent on
 let mapleader = ","
 
 " view
-"set shell=/bin/sh
+set shell=/bin/sh
+set lazyredraw
 set nofoldenable
 set number
 set tabstop=2
@@ -74,17 +84,27 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
 
+" aliases / fzf
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+nmap <c-f> :FZF<CR>
+
+" aliases / terminal
+tnoremap <Esc> <C-\><C-n>
+
 " plugins / nerdtree
 let g:NERDTreeMouseMode=3
-let g:NERDTreeGitStatusIgnoreSubmodules=1
 map <silent> <Leader>d :NERDTreeToggle<CR>
 map <silent> <Leader>f :NERDTreeFind<CR>
 
 " style
+set background=dark
+colorscheme Tomorrow-Night-Eighties
 set fillchars+=vert:│
+highlight VertSplit ctermbg=bg
 highlight clear SignColumn
-
-" gui
-if has('gui_running') || exists('neovim_dot_app')
-  colorscheme Tomorrow-Night-Eighties
-endif
