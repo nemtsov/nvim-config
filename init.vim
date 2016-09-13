@@ -1,20 +1,23 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'mhinz/vim-signify'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'ervandew/supertab'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-signify'
+Plug 'mileszs/ack.vim'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'pangloss/vim-javascript'
 Plug 'Raimondi/delimitMate'
+Plug 'rhysd/nyaovim-popup-tooltip'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
-Plug 'rhysd/nyaovim-popup-tooltip'
 call plug#end()
 
 filetype plugin indent on
@@ -32,6 +35,7 @@ set expandtab
 set list " Show invisible characters
 set listchars=tab:>.,trail:.,extends:>,precedes:\<
 set noerrorbells visualbell t_vb=
+set notimeout
 
 " searching
 set ignorecase  " searches are case insensitive...
@@ -47,6 +51,7 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
+nnoremap <leader>w :w<CR>
 
 " aliases / anti-temptation
 ino <Up> <NOP>
@@ -58,6 +63,10 @@ ino <Left> <NOP>
 map <S-k> <NOP>
 map <F1> <Esc>
 imap <F1> <Esc>
+
+" aliases / buffers
+nnoremap <Leader>j :bp<CR>
+nnoremap <Leader>k :bn<CR>
 
 " aliases / copy to clipboard
 vnoremap  <leader>y  "+y
@@ -101,6 +110,20 @@ tnoremap <Esc> <C-\><C-n>
 let g:NERDTreeMouseMode=3
 map <silent> <Leader>d :NERDTreeToggle<CR>
 map <silent> <Leader>f :NERDTreeFind<CR>
+
+" plugins / ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --ignore=public/assets/css'
+endif
+nmap <Leader>/ :Ack! 
+
+" plugins / airline
+let g:airline_powerline_fonts=1
+let g:airline_skip_empty_sections = 1
+let g:airline_left_sep=''
+let g:airline_left_alt_sep=''
+let g:airline_right_sep=''
+let g:airline_right_alt_sep=''
 
 " style
 set background=dark
