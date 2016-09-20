@@ -104,7 +104,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 nmap <c-f> :FZF<CR>
 
 " aliases / terminal
-tnoremap <Esc> <C-\><C-n>
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
 
 " plugins / nerdtree
 let g:NERDTreeMouseMode=3
