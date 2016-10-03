@@ -127,9 +127,30 @@ let g:airline_left_alt_sep=''
 let g:airline_right_sep=''
 let g:airline_right_alt_sep=''
 
+" plugins / syntastic
+function! SyntasticESlintChecker()
+  if (!exists('g:syntastic_eslint_path'))
+    let g:syntastic_eslint_path = 'eslint'
+    if executable('npm')
+      let l:npm_bin = split(system('npm bin'), '\n')[0]
+    endif
+    if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+      let g:syntastic_eslint_path = l:npm_bin . '/eslint'
+    endif
+  endif
+  let b:syntastic_javascript_eslint_exec = g:syntastic_eslint_path
+endfunction
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_check_on_open = 0
+let g:syntastic_javascript_checkers = ['eslint']
+autocmd FileType javascript :call SyntasticESlintChecker()
+
 " style
 set background=dark
 colorscheme Tomorrow-Night-Eighties
 set fillchars+=vert:│
 highlight VertSplit ctermbg=bg
 highlight clear SignColumn
+highlight Search ctermbg=black
