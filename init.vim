@@ -1,23 +1,28 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'Quramy/vim-js-pretty-template', { 'for': 'javascript' }
 Plug 'Raimondi/delimitMate'
 Plug 'rhysd/nyaovim-popup-tooltip'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
+Plug 'mhinz/vim-startify'
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 call plug#end()
 
 filetype plugin indent on
@@ -67,6 +72,13 @@ imap <F1> <Esc>
 " aliases / buffers
 nnoremap <Leader>j :bp<CR>
 nnoremap <Leader>k :bn<CR>
+
+" aliases / tabs
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
 
 " aliases / copy to clipboard
 vnoremap  <leader>y  "+y
@@ -120,6 +132,7 @@ endif
 nmap <Leader>/ :Ack! 
 
 " plugins / airline
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
 let g:airline_skip_empty_sections = 1
 let g:airline_left_sep=''
@@ -146,6 +159,21 @@ set statusline+=%*
 let g:syntastic_check_on_open = 0
 let g:syntastic_javascript_checkers = ['eslint']
 autocmd FileType javascript :call SyntasticESlintChecker()
+let g:syntastic_html_tidy_ignore_errors = [
+    \  'plain text isn''t allowed in <head> elements',
+    \  '<base> escaping malformed URI reference',
+    \  'discarding unexpected <body>',
+    \  '<script> escaping malformed URI reference',
+    \  '<script> proprietary attribute "class"',
+    \  '</head> isn''t allowed in <body> elements',
+    \  "'<' + '/' + letter not allowed here"
+    \ ]
+
+" plugin / vim-js-pretty-template
+autocmd FileType javascript JsPreTmpl html
+
+" plugin / easymotion
+"noremap <Leader> <Plug>(easymotion-prefix)
 
 " style
 set background=dark
@@ -153,4 +181,4 @@ colorscheme Tomorrow-Night-Eighties
 set fillchars+=vert:│
 highlight VertSplit ctermbg=bg
 highlight clear SignColumn
-highlight Search ctermbg=black
+highlight Search ctermbg=grey
