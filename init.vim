@@ -1,12 +1,15 @@
 call plug#begin('~/.config/nvim/plugged')
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
+Plug 'morhetz/gruvbox'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
@@ -19,10 +22,12 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
+Plug 'yonchu/accelerated-smooth-scroll'
 call plug#end()
 
 filetype plugin indent on
@@ -68,6 +73,9 @@ ino <Left> <NOP>
 map <S-k> <NOP>
 map <F1> <Esc>
 imap <F1> <Esc>
+imap <C-p> <NOP>
+imap <C-k> <Esc>
+vmap <C-k> <Esc>
 
 " aliases / buffers
 nnoremap <Leader>j :bp<CR>
@@ -113,7 +121,7 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-nmap <c-f> :FZF<CR>
+nmap <c-p> :FZF<CR>
 
 " aliases / terminal
 if has('nvim')
@@ -133,6 +141,7 @@ nmap <Leader>/ :Ack!
 
 " plugins / airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts=1
 let g:airline_skip_empty_sections = 1
 let g:airline_left_sep=''
@@ -175,10 +184,28 @@ autocmd FileType javascript JsPreTmpl html
 " plugin / easymotion
 "noremap <Leader> <Plug>(easymotion-prefix)
 
+" plugin / accelerated-smooth-scroll
+let g:ac_smooth_scroll_fb_sleep_time_msec = 5
+let g:ac_smooth_scroll_du_sleep_time_msec = 5
+
 " style
+set termguicolors
 set background=dark
 colorscheme Tomorrow-Night-Eighties
+"colorscheme gruvbox
+"colorscheme deep-space
 set fillchars+=vert:│
 highlight VertSplit ctermbg=bg
 highlight clear SignColumn
 highlight Search ctermbg=grey
+
+" style/gui
+highlight DiffAdd gui=bold guibg=none guifg=green
+highlight DiffDelete gui=bold guibg=none guifg=red
+highlight DiffChange gui=bold guibg=none guifg=yellow
+
+" style/mouse-cursor
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+" style/smooth scrolling
+set scroll=5
