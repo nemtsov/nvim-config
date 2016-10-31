@@ -13,6 +13,7 @@ Plug 'morhetz/gruvbox'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'Quramy/vim-js-pretty-template', { 'for': 'javascript' }
 Plug 'Raimondi/delimitMate'
 Plug 'rhysd/nyaovim-popup-tooltip'
@@ -25,7 +26,7 @@ Plug 'tpope/vim-obsession'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mhinz/vim-startify'
+Plug 'wavded/vim-stylus', { 'for': ['vue'] }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'yonchu/accelerated-smooth-scroll'
 call plug#end()
@@ -76,6 +77,7 @@ imap <F1> <Esc>
 imap <C-p> <NOP>
 imap <C-k> <Esc>
 vmap <C-k> <Esc>
+cmap <C-k> <Esc>
 
 " aliases / buffers
 nnoremap <Leader>j :bp<CR>
@@ -192,6 +194,7 @@ let g:ac_smooth_scroll_du_sleep_time_msec = 5
 set termguicolors
 set background=dark
 colorscheme Tomorrow-Night-Eighties
+"colorscheme Tomorrow
 "colorscheme gruvbox
 "colorscheme deep-space
 set fillchars+=vert:│
