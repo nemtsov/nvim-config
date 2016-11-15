@@ -1,3 +1,5 @@
+set encoding=utf-8
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
@@ -7,6 +9,7 @@ Plug 'ervandew/supertab'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
@@ -26,6 +29,7 @@ Plug 'tpope/vim-obsession'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 Plug 'wavded/vim-stylus', { 'for': ['vue'] }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'yonchu/accelerated-smooth-scroll'
@@ -163,13 +167,16 @@ function! SyntasticESlintChecker()
     endif
   endif
   let b:syntastic_javascript_eslint_exec = g:syntastic_eslint_path
+  let b:syntastic_vue_eslint_exec = g:syntastic_eslint_path
 endfunction
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_check_on_open = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_vue_checkers = ['eslint']
 autocmd FileType javascript :call SyntasticESlintChecker()
+autocmd FileType vue :call SyntasticESlintChecker()
 let g:syntastic_html_tidy_ignore_errors = [
     \  'plain text isn''t allowed in <head> elements',
     \  '<base> escaping malformed URI reference',
@@ -205,7 +212,7 @@ highlight Search ctermbg=grey
 " style/gui
 highlight DiffAdd gui=bold guibg=none guifg=green
 highlight DiffDelete gui=bold guibg=none guifg=red
-highlight DiffChange gui=bold guibg=none guifg=yellow
+highlight DiffChange gui=bold guibg=none guifg=orange
 
 " style/mouse-cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
