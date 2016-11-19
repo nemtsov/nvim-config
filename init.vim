@@ -1,36 +1,30 @@
 set encoding=utf-8
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'cakebaker/scss-syntax.vim'
+Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'vue'] }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'mattn/emmet-vim'
+Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] }
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
-Plug 'morhetz/gruvbox'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'othree/html5.vim'
-Plug 'pangloss/vim-javascript'
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['mustache', 'mu']}
+Plug 'othree/html5.vim', { 'for': ['html'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'vue'] }
 Plug 'posva/vim-vue', { 'for': 'vue' }
-Plug 'Quramy/vim-js-pretty-template', { 'for': 'javascript' }
+Plug 'Quramy/vim-js-pretty-template', { 'for': ['javascript', 'vue'] }
 Plug 'Raimondi/delimitMate'
-Plug 'rhysd/nyaovim-popup-tooltip'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
-Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-Plug 'wavded/vim-stylus', { 'for': ['vue'] }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'yonchu/accelerated-smooth-scroll'
 call plug#end()
@@ -138,6 +132,9 @@ endif
 let g:NERDTreeMouseMode=3
 map <silent> <Leader>d :NERDTreeToggle<CR>
 map <silent> <Leader>f :NERDTreeFind<CR>
+
+" plugins / nerdcommenter
+let g:NERDCustomDelimiters = { 'vue': { 'left': '// ', 'leftAlt': '/*', 'rightAlt': '*/' } }
 
 " plugins / ack
 if executable('ag')
