@@ -198,9 +198,6 @@ let g:ac_smooth_scroll_du_sleep_time_msec = 5
 set termguicolors
 set background=dark
 colorscheme Tomorrow-Night-Eighties
-"colorscheme Tomorrow
-"colorscheme gruvbox
-"colorscheme deep-space
 set fillchars+=vert:│
 highlight VertSplit ctermbg=bg
 highlight clear SignColumn
@@ -216,3 +213,7 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " style/smooth scrolling
 set scroll=5
+
+if filereadable(expand('~/.config/nvim/init.local.vim'))
+  source ~/.config/nvim/init.local.vim
+endif
