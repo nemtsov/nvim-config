@@ -187,9 +187,6 @@ let g:syntastic_html_tidy_ignore_errors = [
 " plugin / vim-js-pretty-template
 autocmd FileType javascript JsPreTmpl html
 
-" plugin / easymotion
-"noremap <Leader> <Plug>(easymotion-prefix)
-
 " plugin / accelerated-smooth-scroll
 let g:ac_smooth_scroll_fb_sleep_time_msec = 5
 let g:ac_smooth_scroll_du_sleep_time_msec = 5
