@@ -161,7 +161,7 @@ let g:NERDSpaceDelims = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --ignore=public/assets/css'
 endif
-nmap <Leader>/ :Ack! 
+nmap <Leader>/ :Ack!
 
 " plugins / airline
 let g:airline#extensions#tabline#enabled = 1
