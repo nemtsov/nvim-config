@@ -174,11 +174,6 @@ let g:airline_right_sep=''
 let g:airline_right_alt_sep=''
 
 " plugins / neomake
-let g:neomake_vue_eslint_d_maker = {
-    \ 'args': ['-f', 'compact'],
-    \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-    \ '%W%f: line %l\, col %c\, Warning - %m'
-    \ }
 let g:neomake_javascript_enabled_makers = ['eslint_d']
 let g:neomake_vue_enabled_makers = ['eslint_d']
 autocmd! BufWritePost * Neomake
