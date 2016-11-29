@@ -195,14 +195,6 @@ set termguicolors
 set background=dark
 colorscheme Tomorrow-Night-Eighties
 set fillchars+=vert:│
-highlight VertSplit ctermbg=bg
-highlight clear SignColumn
-highlight Search ctermbg=grey
-
-" style/gui
-highlight DiffAdd gui=bold guibg=none guifg=green
-highlight DiffDelete gui=bold guibg=none guifg=red
-highlight DiffChange gui=bold guibg=none guifg=orange
 
 " style/mouse-cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -213,3 +205,11 @@ set scroll=5
 if filereadable(expand('~/.config/nvim/init.local.vim'))
   source ~/.config/nvim/init.local.vim
 endif
+
+" style post local
+highlight clear SignColumn
+highlight DiffAdd gui=bold guibg=none guifg=green
+highlight DiffDelete gui=bold guibg=none guifg=red
+highlight DiffChange gui=bold guibg=none guifg=orange
+highlight VertSplit guibg=bg
+highlight Search guibg=#dddddd
