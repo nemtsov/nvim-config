@@ -155,7 +155,7 @@ fu! NERDCommenter_after()
     g:ft
   endif
 endfu
-let g:NERDCustomDelimiters = { 'javascript': { 'left': '// ', 'leftAlt': '/* ', 'rightAlt': ' */' } }
+let g:NERDSpaceDelims = 1
 
 " plugins / ack
 if executable('ag')
