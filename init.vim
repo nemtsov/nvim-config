@@ -8,6 +8,7 @@ Plug 'ervandew/supertab'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+Plug 'neomake/neomake'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] }
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
@@ -20,7 +21,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'vim-airline/vim-airline'
@@ -45,6 +45,7 @@ set list " Show invisible characters
 set listchars=tab:>.,trail:.,extends:>,precedes:\<
 set noerrorbells visualbell t_vb=
 set notimeout
+let loaded_matchparen = 1
 
 " searching
 set ignorecase  " searches are case insensitive...
@@ -172,37 +173,15 @@ let g:airline_left_alt_sep=''
 let g:airline_right_sep=''
 let g:airline_right_alt_sep=''
 
-" plugins / syntastic
-function! SyntasticESlintChecker()
-  if (!exists('g:syntastic_eslint_path'))
-    let g:syntastic_eslint_path = 'eslint'
-    if executable('npm')
-      let l:npm_bin = split(system('npm bin'), '\n')[0]
-    endif
-    if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
-      let g:syntastic_eslint_path = l:npm_bin . '/eslint'
-    endif
-  endif
-  let b:syntastic_javascript_eslint_exec = g:syntastic_eslint_path
-  let b:syntastic_vue_eslint_exec = g:syntastic_eslint_path
-endfunction
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_check_on_open = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_vue_checkers = ['eslint']
-autocmd FileType javascript :call SyntasticESlintChecker()
-autocmd FileType vue :call SyntasticESlintChecker()
-let g:syntastic_html_tidy_ignore_errors = [
-    \  'plain text isn''t allowed in <head> elements',
-    \  '<base> escaping malformed URI reference',
-    \  'discarding unexpected <body>',
-    \  '<script> escaping malformed URI reference',
-    \  '<script> proprietary attribute "class"',
-    \  '</head> isn''t allowed in <body> elements',
-    \  "'<' + '/' + letter not allowed here"
-    \ ]
+" plugins / neomake
+let g:neomake_vue_eslint_d_maker = {
+    \ 'args': ['-f', 'compact'],
+    \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+    \ '%W%f: line %l\, col %c\, Warning - %m'
+    \ }
+let g:neomake_javascript_enabled_makers = ['eslint_d']
+let g:neomake_vue_enabled_makers = ['eslint_d']
+autocmd! BufWritePost * Neomake
 
 " plugin / vim-js-pretty-template
 autocmd FileType javascript JsPreTmpl html
