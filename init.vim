@@ -25,6 +25,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/tcd.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'yonchu/accelerated-smooth-scroll'
 call plug#end()
@@ -34,6 +35,7 @@ filetype plugin indent on
 let mapleader = ","
 
 " view
+set autoread
 set shell=/bin/sh
 set lazyredraw
 set nofoldenable
@@ -184,6 +186,9 @@ autocmd FileType javascript JsPreTmpl html
 " plugin / accelerated-smooth-scroll
 let g:ac_smooth_scroll_fb_sleep_time_msec = 5
 let g:ac_smooth_scroll_du_sleep_time_msec = 5
+
+" plugin / tcd
+nnoremap <leader>cd call Tcd(getcwd())
 
 " style
 set termguicolors
