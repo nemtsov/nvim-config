@@ -4,7 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'vue'] }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'ervandew/supertab'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
@@ -21,6 +20,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'scrooloose/nerdcommenter'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'vim-airline/vim-airline'
@@ -175,6 +175,9 @@ let g:airline_left_alt_sep=''
 let g:airline_right_sep=''
 let g:airline_right_alt_sep=''
 
+" plugins / deoplete
+let g:deoplete#enable_at_startup = 1
+
 " plugins / neomake
 let g:neomake_javascript_enabled_makers = ['eslint_d']
 let g:neomake_vue_enabled_makers = ['eslint_d']
@@ -195,6 +198,8 @@ set termguicolors
 set background=dark
 colorscheme Tomorrow-Night-Eighties
 set fillchars+=vert:│
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
 
 " style/mouse-cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
