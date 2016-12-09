@@ -2,24 +2,18 @@ set encoding=utf-8
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'vue'] }
-Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
 Plug 'neomake/neomake'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] }
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
-Plug 'mustache/vim-mustache-handlebars', { 'for': ['mustache', 'mu']}
-Plug 'othree/html5.vim', { 'for': ['html'] }
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'vue'] }
 Plug 'posva/vim-vue', { 'for': 'vue' }
-Plug 'Quramy/vim-js-pretty-template', { 'for': ['javascript', 'vue'] }
 Plug 'Raimondi/delimitMate'
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'scrooloose/nerdcommenter'
+Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -183,15 +177,15 @@ let g:neomake_javascript_enabled_makers = ['eslint_d']
 let g:neomake_vue_enabled_makers = ['eslint_d']
 autocmd! BufWritePost * Neomake
 
-" plugin / vim-js-pretty-template
-autocmd FileType javascript JsPreTmpl html
-
 " plugin / accelerated-smooth-scroll
 let g:ac_smooth_scroll_fb_sleep_time_msec = 5
 let g:ac_smooth_scroll_du_sleep_time_msec = 5
 
 " plugin / tcd
 nnoremap <leader>cd call Tcd(getcwd())
+
+" plugin / polyglot / jsx
+let g:jsx_ext_required = 1
 
 " style
 set termguicolors
