@@ -2,6 +2,7 @@ set encoding=utf-8
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'vue'] }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
@@ -169,7 +170,12 @@ let g:airline_left_alt_sep=''
 let g:airline_right_sep=''
 let g:airline_right_alt_sep=''
 
+" plugins / tern
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = 1
+
 " plugins / deoplete
+set completeopt-=preview
 let g:deoplete#enable_at_startup = 1
 
 " plugins / neomake
