@@ -189,7 +189,7 @@ autocmd InsertLeave * set nocul
 hi CursorLineNR guifg=#dddddd
 
 " style / statusline
-set statusline=\ \ %f%=%r\ %m\ %p%%\ \
+set statusline=\ \ %f%=%r\ %m\ %p%%\ \ 
 hi StatusLine guibg=#dddddd guifg=#4f4f4f
 hi StatusLineNC guibg=#666666 guifg=#333333
 hi TabLineFill guibg=#dddddd guifg=#333333
