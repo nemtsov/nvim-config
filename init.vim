@@ -1,7 +1,6 @@
 set encoding=utf-8
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'vue'] }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'jlanzarotta/bufexplorer'
@@ -14,12 +13,9 @@ Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'scrooloose/nerdcommenter'
-Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/tcd.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
 Plug 'yonchu/accelerated-smooth-scroll'
@@ -158,17 +154,7 @@ let g:NERDSpaceDelims = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --ignore=public/assets/css'
 endif
-nmap <Leader>/ :Ack!
-
-" plugins / airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_powerline_fonts=1
-let g:airline_skip_empty_sections = 1
-let g:airline_left_sep=''
-let g:airline_left_alt_sep=''
-let g:airline_right_sep=''
-let g:airline_right_alt_sep=''
+nmap <Leader>/ :Ack! 
 
 " plugins / tern
 let g:tern_request_timeout = 1
@@ -193,13 +179,22 @@ nnoremap <leader>cd call Tcd(getcwd())
 " plugin / polyglot / jsx
 let g:jsx_ext_required = 1
 
-" style
+" style / statusline
 set termguicolors
 set background=dark
 colorscheme Tomorrow-Night-Eighties
 set fillchars+=vert:│
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
+hi CursorLineNR guifg=#dddddd
+
+" style / statusline
+set statusline=%f%=%r\ %m\ %p%%
+hi StatusLine guibg=#dddddd guifg=#4f4f4f
+hi StatusLineNC guibg=#666666 guifg=#333333
+hi TabLineFill guibg=#dddddd guifg=#333333
+hi TabLine guibg=#666666 guifg=#333333
+hi TabLineSel guibg=#cccccc guifg=#4f4f4f
 
 " style/mouse-cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
