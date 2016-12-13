@@ -190,11 +190,6 @@ hi CursorLineNR guifg=#dddddd
 
 " style / statusline
 set statusline=\ \ %f\ \ %#StatusLineNC#%=%r\ %0*\ \ %m\ %p%%\ \ \ 
-hi StatusLine guibg=#dddddd guifg=#4f4f4f
-hi StatusLineNC guibg=#666666 guifg=#333333
-hi TabLineFill guibg=#dddddd guifg=#333333
-hi TabLine guibg=#666666 guifg=#333333
-hi TabLineSel guibg=#cccccc guifg=#4f4f4f
 
 " style/mouse-cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -207,9 +202,22 @@ if filereadable(expand('~/.config/nvim/init.local.vim'))
 endif
 
 " style post local
-highlight clear SignColumn
-highlight DiffAdd gui=bold guibg=none guifg=green
-highlight DiffDelete gui=bold guibg=none guifg=red
-highlight DiffChange gui=bold guibg=none guifg=orange
-highlight VertSplit guibg=bg
-highlight Search guibg=#dddddd
+hi clear SignColumn
+hi DiffAdd gui=bold guibg=none guifg=green
+hi DiffDelete gui=bold guibg=none guifg=red
+hi DiffChange gui=bold guibg=none guifg=orange
+hi VertSplit guibg=bg
+hi Search guibg=#dddddd
+if &bg=="dark"
+  hi StatusLine guibg=#dddddd guifg=#4f4f4f
+  hi StatusLineNC guibg=#666666 guifg=#333333
+  hi TabLineFill guibg=#dddddd guifg=#333333
+  hi TabLine guibg=#666666 guifg=#333333
+  hi TabLineSel guibg=#cccccc guifg=#4f4f4f
+else
+  hi StatusLine guibg=#222222 guifg=#B0B0B0
+  hi StatusLineNC guibg=#999999 guifg=#CCCCCC
+  hi TabLineFill guibg=#dddddd guifg=#CCCCCC
+  hi TabLine guibg=#999999 guifg=#CCCCCC
+  hi TabLineSel guibg=#333333 guifg=#B0B0B0
+endif
