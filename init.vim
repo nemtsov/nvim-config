@@ -1,6 +1,7 @@
 set encoding=utf-8
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'bpietravalle/vim-bolt', { 'for': 'bolt' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'jlanzarotta/bufexplorer'
@@ -18,7 +19,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'vim-scripts/tcd.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
-Plug 'yonchu/accelerated-smooth-scroll'
 call plug#end()
 
 filetype plugin indent on
