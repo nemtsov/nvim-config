@@ -19,6 +19,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'vim-scripts/tcd.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
+Plug 'yonchu/accelerated-smooth-scroll'
 call plug#end()
 
 filetype plugin indent on
@@ -170,8 +171,8 @@ let g:neomake_vue_enabled_makers = ['eslint_d']
 autocmd! BufWritePost * Neomake
 
 " plugin / accelerated-smooth-scroll
-let g:ac_smooth_scroll_fb_sleep_time_msec = 5
-let g:ac_smooth_scroll_du_sleep_time_msec = 5
+let g:ac_smooth_scroll_fb_sleep_time_msec = 3
+let g:ac_smooth_scroll_du_sleep_time_msec = 3
 
 " plugin / tcd
 nnoremap <leader>cd call Tcd(getcwd())
