@@ -1,5 +1,3 @@
-set encoding=utf-8
-
 call plug#begin('~/.config/nvim/plugged')
 Plug 'bpietravalle/vim-bolt', { 'for': 'bolt' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
@@ -180,17 +178,23 @@ nnoremap <leader>cd call Tcd(getcwd())
 " plugin / polyglot / jsx
 let g:jsx_ext_required = 1
 
-" style / statusline
+" auto watch vimrc
+augroup myvimrc
+  au!
+  au BufWritePost init.vim,init.local.vim so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+" style
 set termguicolors
 set background=dark
-colorscheme Tomorrow-Night-Eighties
 set fillchars+=vert:│
+
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
-hi CursorLineNR guifg=#dddddd
 
 " style / statusline
-set statusline=\ \ %f\ \ %#StatusLineNC#%=%r\ %0*\ \ %m\ %p%%\ \ \ 
+set statusline=\ \ %f\ \ %#StatusLineNC#%=%r\ %0*\ \ %m\ \ %p%%\ \ \ 
+
 
 " style/mouse-cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -203,22 +207,27 @@ if filereadable(expand('~/.config/nvim/init.local.vim'))
 endif
 
 " style post local
+if &background=="dark"
+  colorscheme Tomorrow-Night-Eighties
+  hi StatusLine guibg=#dddddd guifg=#4f4f4f
+  hi StatusLineNC guibg=#666666 guifg=#333333
+  hi TabLineFill guibg=#dddddd guifg=#333333
+  hi TabLine guibg=#666666 guifg=#333333
+  hi TabLineSel guibg=#cccccc guifg=#4f4f4f
+  hi CursorLineNR guifg=#dddddd
+else
+  colorscheme Tomorrow
+  hi StatusLine guibg=#222222 guifg=#B0B0B0
+  hi StatusLineNC guibg=#999999 guifg=#CCCCCC
+  hi TabLineFill guibg=#dddddd guifg=#CCCCCC
+  hi TabLine guibg=#999999 guifg=#CCCCCC
+  hi TabLineSel guibg=#333333 guifg=#B0B0B0
+  hi CursorLineNR guifg=#dddddd
+endif
+
 hi clear SignColumn
 hi DiffAdd gui=bold guibg=none guifg=green
 hi DiffDelete gui=bold guibg=none guifg=red
 hi DiffChange gui=bold guibg=none guifg=orange
 hi VertSplit guibg=bg
 hi Search guibg=#dddddd
-if &bg=="dark"
-  hi StatusLine guibg=#dddddd guifg=#4f4f4f
-  hi StatusLineNC guibg=#666666 guifg=#333333
-  hi TabLineFill guibg=#dddddd guifg=#333333
-  hi TabLine guibg=#666666 guifg=#333333
-  hi TabLineSel guibg=#cccccc guifg=#4f4f4f
-else
-  hi StatusLine guibg=#222222 guifg=#B0B0B0
-  hi StatusLineNC guibg=#999999 guifg=#CCCCCC
-  hi TabLineFill guibg=#dddddd guifg=#CCCCCC
-  hi TabLine guibg=#999999 guifg=#CCCCCC
-  hi TabLineSel guibg=#333333 guifg=#B0B0B0
-endif
