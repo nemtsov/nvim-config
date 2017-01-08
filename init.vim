@@ -38,6 +38,7 @@ set list " Show invisible characters
 set listchars=tab:>.,trail:.,extends:>,precedes:\<
 set noerrorbells visualbell t_vb=
 set notimeout
+set inccommand=split
 let loaded_matchparen = 1
 
 " searching
