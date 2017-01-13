@@ -8,6 +8,7 @@ Plug 'neomake/neomake'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] }
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.mustache'] }
 Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeFind', 'NERDTreeToggle'] }
