@@ -205,8 +205,8 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 " style/smooth scrolling
 set scroll=5
 
-if filereadable(expand('~/.config/nvim/init.local.vim'))
-  source ~/.config/nvim/init.local.vim
+if filereadable(expand('~/.nvim.local.vim'))
+  source ~/.nvim.local.vim
 endif
 
 " style post local
