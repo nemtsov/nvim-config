@@ -110,14 +110,23 @@ cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
 
 " aliases / fzf
+imap <leader><tab> <plug>(fzf-maps-i)
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
+nmap <leader>/ :Ag<CR>
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 nmap <c-p> :FZF<CR>
+
+autocmd VimEnter * command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
 
 " aliases / terminal
 if has('nvim')
@@ -156,7 +165,6 @@ let g:NERDSpaceDelims = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --ignore=public/assets/css'
 endif
-nmap <Leader>/ :Ack! 
 
 " plugins / tern
 let g:tern_request_timeout = 1
