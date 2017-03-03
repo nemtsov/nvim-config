@@ -69,9 +69,6 @@ map <S-k> <NOP>
 map <F1> <Esc>
 imap <F1> <Esc>
 imap <C-p> <NOP>
-imap <C-k> <Esc>
-vmap <C-k> <Esc>
-cmap <C-k> <Esc>
 
 " aliases / buffers
 nnoremap <Leader>j :bp<CR>
